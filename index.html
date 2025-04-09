@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Justin Curl</title>
+  <!-- Import a clean, professional Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #ffffff;
+      color: #333;
+      line-height: 1.6;
+      text-align: center;
+    }
+    .content {
+      max-width: 800px;
+      margin: 5px auto 0 auto; /* Removed bottom margin from content */
+      padding: 40px 20px;
+    }
+    .profile-pic {
+      display: block;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 2px auto 20px auto; /* minimal top gap */
+      border: 2px solid #e7e7e7;
+    }
+    section {
+      margin-bottom: 60px;
+      text-align: left;
+    }
+    /* Reduce gap after Profile and Public Writing sections */
+    #profile,
+    #public-writing {
+      margin-bottom: 30px;
+    }
+    section h2 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #e7e7e7;
+      padding-bottom: 10px;
+      text-align: center;
+    }
+    /* Increase the font size for the name (Profile header) */
+    #profile h2 {
+      font-size: 2em;
+    }
+    section p {
+      font-size: 1.1em;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    #profile p {
+      text-align: left;
+    }
+    ul {
+      list-style-type: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    li a {
+      font-weight: 700;
+      text-decoration: none;
+      color: #2575fc;
+    }
+    li a:hover {
+      text-decoration: underline;
+    }
+    /* Divider styled to match section lines */
+    hr.divider {
+      border: 0;
+      border-top: 1px solid #e7e7e7;
+      margin: 10px 0; /* Reduced gap above and below the divider */
+    }
+    /* Contact Section Styling */
+    #contact {
+      text-align: center;
+      margin: 0; /* No extra margin */
+    }
+    /* Reduce gap above contact text */
+    #contact p {
+      font-size: 1.1em;
+      margin: 5px 0;  /* Minimal margin for spacing */
+    }
+    #contact a {
+      font-weight: 700;
+      text-decoration: none;
+      color: #2575fc;
+    }
+    #contact a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .profile-pic {
+        width: 176px;
+        height: 176px;
+        margin: 2px auto 20px auto;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+      section p {
+        font-size: 1rem;
+      }
+      #profile h2 {
+        font-size: 1.75rem;
+      }
+      #contact p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <!-- Profile Picture -->
+    <img src="headshot.jpg" alt="Justin Curl Profile Picture" class="profile-pic" />
+    
+    <!-- Profile/Biography Section with Your Name -->
+    <section id="profile">
+      <h2>Justin Curl</h2>
+      <p>
+        Hello! I'm a J.D. Candidate at Harvard Law School and for the past year served as <i>Technology Law &amp; Policy Advisor</i> to New Mexico Attorney General Raúl Torrez. 
+      </p>
+      <p>
+        Previously, I worked as an AI researcher at Microsoft Research Asia, was a Schwarzman Scholar at Tsinghua University in Beijing, and graduated <i>magna cum laude</i> with a degree in Computer Science from Princeton University, where I was fortunate to be advised by Arvind Narayanan.
+      </p>
+      <p>
+        I research and write about the intersection of tech and the law. You can find some of my recent publications below.
+      </p>
+    </section>
+    
+    <!-- Public Writing Section (appearing first) -->
+    <section id="public-writing">
+      <h2>Public Writing</h2>
+      <ul>
+        <!-- <li>
+          <a href="#">A Primer on Mitigating AI Policy Harms</a><br>
+          Justin Curl &amp; Alan Rozenshtein<br>
+          Lawfare Research Series (2025)
+        </li>
+        <li>
+          <a href="#">AI, Judging, and the Ordinary Meaning of Text</a><br>
+          Justin Curl, Kart Kandula, Faiz Surani &amp; Peter Henderson<br>
+          Lawfare (2025)
+        </li> -->
+        <li>
+          <a href="https://www.lawfaremedia.org/article/a-financial-primer-on-a-new-international-ai-organization">A Financial Primer on a New International AI Organization</a><br>
+          Justin Curl<br>
+          Lawfare (2024)
+        </li>
+        <li>
+          <a href="pdfs/PCAST_vFinal.pdf">Policy Comment on Democracy and Generative AI</a><br>
+          Edward Tian, Justin Curl &amp; Sihao Huang<br>
+          President's Council of Advisors on Science and Technology (2023)
+        </li>
+        <li>
+          <a href="https://blog.citp.princeton.edu/2023/04/16/decoding-chinas-ambitious-generative-ai-regulations/">Decoding China’s Ambitious Generative AI Regulations</a><br>
+          Justin Curl &amp; Sihao Huang<br>
+          Princeton Center for Information Technology Policy (2023)
+        </li>
+      </ul>
+    </section>
+    
+    <!-- Research & Scholarship Section (appearing second) -->
+    <section id="research-scholarship">
+      <h2>Research &amp; Scholarship</h2>
+      <ul>
+        <li>
+          <a href="#">Foreseeably Discriminatory: Modernizing the Equal Protection Clause for AI Systems</a><br>
+          Justin Curl &amp; Emily Hua<br>
+          Harvard Journal of Law &amp; Technology (forthcoming 2025)
+        </li>
+        <li>
+          <a href="#https://arxiv.org/abs/2407.05338">A Blueprint for Auditing Generative AI</a><br>
+          Jakob Mökander, Justin Curl &amp; Mihir Kshirsagar<br>
+          Research Handbook on Law of Artificial Intelligence (2d ed. forthcoming 2025)
+        </li>
+        <!-- <li>
+          <a href="#">Rethinking Binary Search Doctrine: Four Essential Questions</a><br>
+          Justin Curl<br>
+          2025 Privacy Law Scholars Conference (forthcoming 2025)
+        </li>
+        <li>
+          <a href="#">Meaning Beyond Numbers: Introducing the Plot Staircase to Measure Graphical Preferences</a><br>
+          Talbot Andrews, Markus Prior &amp; Justin Curl<br>
+          Political Analysis (forthcoming 2025)
+        </li> -->
+        <li>
+          <a href="https://www.nature.com/articles/s42256-023-00765-8">Defending ChatGPT against Jailbreak Attack via Self-Reminder</a><br>
+          Yueqi Xie, Jingwei Yi, Jiawei Shao, Justin Curl, Lingjuan Lyu, Qifeng Chen, Xing Xie &amp; Fangzhao Wu<br>
+          Nature Machine Intelligence (2023)
+        </li>
+      </ul>
+    </section>
+    
+    <!-- Divider -->
+    <hr class="divider">
+    
+    <!-- Contact Section -->
+    <section id="contact">
+      <p>Feel free to get in touch over email at justincurl13 at gmail dot com</p>
+      <p>
+        <a href="https://scholar.google.com/citations?user=nNEfT5MAAAAJ&hl=en" target="_blank">Google Scholar</a> |
+        <a href="https://www.linkedin.com/in/justincurl/" target="_blank">Linkedin</a> |
+        <a href="https://x.com/curl_justin" target="_blank">Twitter</a> |
+        <a href="https://bsky.app/profile/justincurl.bsky.social" target="_blank">Bluesky</a>
+      </p>
+    </section>
+  </div>
+</body>
+</html>
