@@ -1,1 +1,1 @@
-Personal website. View it live at [https://justincurl.github.io](url).
+Personal website. View it live at [https://www.justincurl.github.io](url).
