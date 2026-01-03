@@ -1,247 +1,537 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Justin Curl</title>
-  <!-- Import a clean, professional Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
-  <style>
-    /* Basic Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #ffffff;
-      color: #333;
-      line-height: 1.6;
-      text-align: center;
-    }
-    .content {
-      max-width: 800px;
-      margin: 5px auto 0 auto; /* Removed bottom margin from content */
-      padding: 40px 20px;
-    }
-    .profile-pic {
-      display: block;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 2px auto 20px auto; /* minimal top gap */
-      border: 2px solid #e7e7e7;
-    }
-    section {
-      margin-bottom: 60px;
-      text-align: left;
-    }
-    /* Reduce gap after Profile and Public Writing sections */
-    #profile,
-    #public-writing {
-      margin-bottom: 30px;
-    }
-    section h2 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #e7e7e7;
-      padding-bottom: 10px;
-      text-align: center;
-    }
-    /* Increase the font size for the name (Profile header) */
-    #profile h2 {
-      font-size: 2em;
-    }
-    section p {
-      font-size: 1.1em;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    #profile p {
-      text-align: left;
-    }
-    ul {
-      list-style-type: none;
-      margin-left: 0;
-      padding-left: 0;
-    }
-    li {
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-    /* Increase text size in Public Writing and Research sections */
-    #public-writing li,
-    #research-scholarship li {
-      font-size: 1.15em;
-    }
-    li a {
-      font-weight: 700;
-      text-decoration: none;
-      color: #2575fc;
-    }
-    li a:hover {
-      text-decoration: underline;
-    }
-    /* Divider styled to match section lines */
-    hr.divider {
-      border: 0;
-      border-top: 1px solid #e7e7e7;
-      margin: 10px 0; /* Reduced gap above and below the divider */
-    }
-    /* Contact Section Styling */
-    #contact {
-      text-align: center;
-      margin: 0; /* No extra margin */
-    }
-    /* Reduce gap above contact text */
-    #contact p {
-      font-size: 1.1em;
-      margin: 5px 0;  /* Minimal margin for spacing */
-    }
-    #contact a {
-      font-weight: 700;
-      text-decoration: none;
-      color: #2575fc;
-    }
-    #contact a:hover {
-      text-decoration: underline;
-    }
-    @media (max-width: 768px) {
-      .profile-pic {
-        width: 176px;
-        height: 176px;
-        margin: 2px auto 20px auto;
-      }
-      section h2 {
-        font-size: 1.5rem;
-      }
-      section p {
-        font-size: 1rem;
-      }
-      #profile h2 {
-        font-size: 1.75rem;
-      }
-      #contact p {
-        font-size: 1rem;
-      }
-      #public-writing li,
-      #research-scholarship li {
-        font-size: 1.05rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin Curl</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FDFCFA;
+            --color-bg-warm: #F8F6F1;
+            --color-bg-card: #FFFFFF;
+            --color-text: #191919;
+            --color-text-secondary: #525252;
+            --color-text-tertiary: #737373;
+            --color-accent: #C54B32;
+            --color-accent-soft: #E8D5CF;
+            --color-border: #E8E5E0;
+            --color-border-light: #F0EDE8;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --max-width: 680px;
+            --transition-fast: 150ms ease;
+            --transition-medium: 250ms ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 17px;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.65;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            z-index: 1000;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background: rgba(253, 252, 250, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            z-index: 100;
+            transition: border-color var(--transition-medium);
+        }
+
+        .header.scrolled {
+            border-bottom-color: var(--color-border-light);
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-brand {
+            font-family: var(--font-serif);
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .header-brand:hover {
+            color: var(--color-accent);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .header-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .header-link:hover {
+            color: var(--color-accent);
+        }
+
+        .main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 4rem 1.5rem 6rem;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.6s ease forwards;
+        }
+
+        .profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--color-border-light);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .profile-name {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+
+        .profile-tagline {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-text-tertiary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .social-link:hover {
+            color: var(--color-accent);
+        }
+
+        .divider {
+            width: 48px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-soft));
+            margin: 0 auto 3rem;
+            border-radius: 1px;
+            opacity: 0;
+            animation: scaleInLeft 0.5s ease 0.2s forwards;
+        }
+
+        .bio-section {
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.6s ease 0.3s forwards;
+        }
+
+        .bio-text {
+            font-size: 1.0625rem;
+            line-height: 1.75;
+            color: var(--color-text-secondary);
+            margin-bottom: 1.25rem;
+        }
+
+        .bio-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .bio-text a {
+            color: var(--color-text);
+            text-decoration: underline;
+            text-decoration-color: var(--color-border);
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: text-decoration-color var(--transition-fast);
+        }
+
+        .bio-text a:hover {
+            text-decoration-color: var(--color-accent);
+        }
+
+        .section {
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.6s ease 0.4s forwards;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background-color: var(--color-border-light);
+        }
+
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .publication {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .publication:first-child {
+            padding-top: 0;
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .publication-title {
+            font-family: var(--font-serif);
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-title a {
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .publication-title a:hover {
+            color: var(--color-accent);
+        }
+
+        .publication-authors {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .publication-venue {
+            font-size: 0.875rem;
+            color: var(--color-text-tertiary);
+            font-style: italic;
+        }
+
+        .footer {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .footer-text {
+            font-size: 0.8125rem;
+            color: var(--color-text-tertiary);
+            text-align: center;
+        }
+
+        .footer-text a {
+            color: var(--color-text-tertiary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-text a:hover {
+            color: var(--color-accent);
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleInLeft {
+            from {
+                opacity: 0;
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        }
+
+        @media (max-width: 640px) {
+            html {
+                font-size: 16px;
+            }
+
+            .header-inner {
+                padding: 0.875rem 1.25rem;
+            }
+
+            .header-nav {
+                gap: 1rem;
+            }
+
+            .main {
+                padding: 3rem 1.25rem 4rem;
+            }
+
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .publication-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="content">
-    <!-- Profile Picture -->
-    <img src="headshot.jpg" alt="Justin Curl Profile Picture" class="profile-pic" />
-    
-    <!-- Profile/Biography Section with Your Name -->
-    <section id="profile">
-      <h2>Justin Curl</h2>
-      <p>
-        Hi! I am a Fellow at the MacArthur Foundation advising on its AI grantmaking strategy and a third-year at Harvard Law School.
-      </p>
-      <p>
-        Previously, as the Technology Law &amp; Policy Advisor to the New Mexico Attorney General, I wrote deepfake and data privacy legislation, briefed state legislators, and assisted with child safety lawsuits featured in the NYTimes and WSJ. 
-      <p>
-        Before law school, I worked as an AI researcher at Microsoft Research Asia, was a Schwarzman Scholar at Tsinghua University in Beijing, and graduated <i>magna cum laude</i> with a degree in Computer Science from Princeton University, where I was fortunate to be advised by Arvind Narayanan.
-      </p>
-      <p>
-        I research and write about the intersection of AI and the law. I'm always excited to chat, so feel free to get in touch at justincurl13 at gmail dot com.
-      </p>
-    </section>
-    
-    <!-- Public Writing Section (appearing first) -->
-    <section id="public-writing">
-      <h2>Public Writing</h2>
-      <ul>
-        <li>
-          <a href="https://docs.google.com/document/d/1scgmpB79yQfvUeaXhhmiMwLIa6yzGpmiejMtibFLBe8/edit?usp=sharing">What could advanced AI mean for the practice of law?</a><br>
-          Justin Curl, Sayash Kapoor &amp; Arvind Narayanan<br>
-          AI as Normal Technology & Lawfare (forthcoming 2026)
-        </li>
-        <li>
-          <a href="https://www.lawfaremedia.org/article/california-enacted-ai-bills-now-officials-must-define-them">California Enacted AI Bills. Now Officials Must Define Them.</a><br>
-          Justin Curl<br>
-          Lawfare (2025)
-        </li>
-        <li>
-          <a href="https://www.lawfaremedia.org/article/judges-shouldn-t-rely-on-ai-for-the-ordinary-meaning-of-text">Judges Shouldn’t Rely on AI for the Ordinary Meaning of Text</a><br>
-          Justin Curl, Peter Henderson, Kart Kandula &amp; Faiz Surani<br>
-          Lawfare (2025)
-        </li>
-        <li>
-          <a href="https://www.lawfaremedia.org/article/a-financial-primer-on-a-new-international-ai-organization">A Financial Primer on a New International AI Organization</a><br>
-          Justin Curl<br>
-          Lawfare (2024)
-        </li>
-        <li>
-          <a href="pdfs/PCAST_vFinal.pdf">Policy Comment on Democracy and Generative AI</a><br>
-          Edward Tian, Justin Curl &amp; Sihao Huang<br>
-          President's Council of Advisors on Science and Technology (2023)
-        </li>
-        <li>
-          <a href="https://blog.citp.princeton.edu/2023/04/16/decoding-chinas-ambitious-generative-ai-regulations/">Decoding China’s Ambitious Generative AI Regulations</a><br>
-          Justin Curl &amp; Sihao Huang<br>
-          Princeton Center for Information Technology Policy (2023)
-        </li>
-      </ul>
-    </section>
-    
-    <!-- Research & Scholarship Section (appearing second) -->
-    <section id="research-scholarship">
-      <h2>Research &amp; Scholarship</h2>
-      <ul>
-        <li>
-        <a href="#">Regulating AI Harms: A Primer for Policymakers</a><br>
-          Justin Curl &amp; Alan Rozenshtein<br>
-          Lawfare Research Series (forthcoming 2026)
-        </li>
-        <li>
-          <a href="https://jolt.law.harvard.edu/assets/articlePDFs/v38.4/4-Curl-Hua.pdf">Foreseeably Discriminatory: Modernizing the Equal Protection Clause for AI Systems</a><br>
-          Justin Curl &amp; Emily Hua<br>
-          Harvard Journal of Law &amp; Technology (2025)
-        </li>
-        <li>
-          <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/F32C8947D437C5CDB3F47D369D3F73E9/S1047198725100156a.pdf/meaning_beyond_numbers_introducing_the_plot_staircase_to_measure_graphical_preferences.pdf">Meaning Beyond Numbers: Introducing the Plot Staircase to Measure Graphical Preferences</a><br>
-          Talbot Andrews, Justin Curl &amp; Markus Prior<br>
-          Political Analysis (2025)
-        </li>
-        <li>
-          <a href="https://arxiv.org/abs/2407.05338">A Blueprint for Auditing Generative AI</a><br>
-          Jakob Mökander, Justin Curl &amp; Mihir Kshirsagar<br>
-          Research Handbook on Law of Artificial Intelligence (2d ed. 2025)
-        </li>
-        <li>
-          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5847382">Judging Binary Searches: Four Essential Questions</a><br>
-          Justin Curl<br>
-          Privacy Law Scholars Conference (2025)
-        </li>
-        <li>
-          <a href="https://www.nature.com/articles/s42256-023-00765-8">Defending ChatGPT against Jailbreak Attack via Self-Reminder</a><br>
-          Yueqi Xie, Jingwei Yi, Jiawei Shao, Justin Curl, Lingjuan Lyu, Qifeng Chen, Xing Xie &amp; Fangzhao Wu<br>
-          Nature Machine Intelligence (2023)
-        </li>
-      </ul>
-    </section>
-    
-    <!-- Divider -->
-    <hr class="divider">
-    
-    <!-- Contact Section -->
-    <section id="contact">
-      <p>
-        <a href="https://substack.com/@justincurl?" target="_blank">Substack</a> |
-        <a href="https://x.com/curl_justin" target="_blank">Twitter/X</a> |
-        <a href="https://scholar.google.com/citations?user=nNEfT5MAAAAJ&hl=en" target="_blank">Google Scholar</a> |
-        <a href="https://www.linkedin.com/in/justincurl/" target="_blank">Linkedin</a> |
-        
-        
-      </p>
-    </section>
-  </div>
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="header-brand">Justin Curl</a>
+            <nav class="header-nav">
+                <a href="#writing" class="header-link">Writing</a>
+                <a href="#research" class="header-link">Research</a>
+                <a href="mailto:justincurl13@gmail.com" class="header-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="profile-section">
+            <img src="headshot.jpg" alt="Justin Curl" class="profile-pic" />
+            <h1 class="profile-name">Justin Curl</h1>
+            <p class="profile-tagline">Fellow at MacArthur Foundation &middot; Harvard Law School</p>
+            <div class="social-links">
+                <a href="https://substack.com/@justincurl?" target="_blank" class="social-link">Substack</a>
+                <a href="https://x.com/curl_justin" target="_blank" class="social-link">Twitter</a>
+                <a href="https://scholar.google.com/citations?user=nNEfT5MAAAAJ&hl=en" target="_blank" class="social-link">Google Scholar</a>
+                <a href="https://www.linkedin.com/in/justincurl/" target="_blank" class="social-link">LinkedIn</a>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="bio-section">
+            <p class="bio-text">
+                I am a Fellow at the MacArthur Foundation advising on its AI grantmaking strategy and a third-year at Harvard Law School.
+            </p>
+            <p class="bio-text">
+                Previously, as the Technology Law &amp; Policy Advisor to the New Mexico Attorney General, I wrote deepfake and data privacy legislation, briefed state legislators, and assisted with child safety lawsuits featured in the NYTimes and WSJ.
+            </p>
+            <p class="bio-text">
+                Before law school, I worked as an AI researcher at Microsoft Research Asia, was a Schwarzman Scholar at Tsinghua University in Beijing, and graduated <em>magna cum laude</em> with a degree in Computer Science from Princeton University, where I was fortunate to be advised by Arvind Narayanan.
+            </p>
+            <p class="bio-text">
+                I research and write about the intersection of AI and the law. I'm always excited to chat, so feel free to get in touch at <a href="mailto:justincurl13@gmail.com">justincurl13@gmail.com</a>.
+            </p>
+        </section>
+
+        <section class="section" id="writing">
+            <div class="section-header">
+                <span class="section-title">Public Writing</span>
+                <div class="section-line"></div>
+            </div>
+            <div class="publications-list">
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://docs.google.com/document/d/1scgmpB79yQfvUeaXhhmiMwLIa6yzGpmiejMtibFLBe8/edit?usp=sharing">What could advanced AI mean for the practice of law?</a>
+                    </h3>
+                    <p class="publication-authors">Justin Curl, Sayash Kapoor &amp; Arvind Narayanan</p>
+                    <p class="publication-venue">AI as Normal Technology &amp; Lawfare (forthcoming 2026)</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://www.lawfaremedia.org/article/california-enacted-ai-bills-now-officials-must-define-them">California Enacted AI Bills. Now Officials Must Define Them.</a>
+                    </h3>
+                    <p class="publication-authors">Justin Curl</p>
+                    <p class="publication-venue">Lawfare (2025)</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://www.lawfaremedia.org/article/judges-shouldn-t-rely-on-ai-for-the-ordinary-meaning-of-text">Judges Shouldn't Rely on AI for the Ordinary Meaning of Text</a>
+                    </h3>
+                    <p class="publication-authors">Justin Curl, Peter Henderson, Kart Kandula &amp; Faiz Surani</p>
+                    <p class="publication-venue">Lawfare (2025)</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://www.lawfaremedia.org/article/a-financial-primer-on-a-new-international-ai-organization">A Financial Primer on a New International AI Organization</a>
+                    </h3>
+                    <p class="publication-authors">Justin Curl</p>
+                    <p class="publication-venue">Lawfare (2024)</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="pdfs/PCAST_vFinal.pdf">Policy Comment on Democracy and Generative AI</a>
+                    </h3>
+                    <p class="publication-authors">Edward Tian, Justin Curl &amp; Sihao Huang</p>
+                    <p class="publication-venue">President's Council of Advisors on Science and Technology (2023)</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://blog.citp.princeton.edu/2023/04/16/decoding-chinas-ambitious-generative-ai-regulations/">Decoding China's Ambitious Generative AI Regulations</a>
+                    </h3>
+                    <p class="publication-authors">Justin Curl &amp; Sihao Huang</p>
+                    <p class="publication-venue">Princeton Center for Information Technology Policy (2023)</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="research">
+            <div class="section-header">
+                <span class="section-title">Research &amp; Scholarship</span>
+                <div class="section-line"></div>
+            </div>
+            <div class="publications-list">
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="#">Regulating AI Harms: A Primer for Policymakers</a>
+                    </h3>
+                    <p class="publication-authors">Justin Curl &amp; Alan Rozenshtein</p>
+                    <p class="publication-venue">Lawfare Research Series (forthcoming 2026)</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://jolt.law.harvard.edu/assets/articlePDFs/v38.4/4-Curl-Hua.pdf">Foreseeably Discriminatory: Modernizing the Equal Protection Clause for AI Systems</a>
+                    </h3>
+                    <p class="publication-authors">Justin Curl &amp; Emily Hua</p>
+                    <p class="publication-venue">Harvard Journal of Law &amp; Technology (2025)</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/F32C8947D437C5CDB3F47D369D3F73E9/S1047198725100156a.pdf/meaning_beyond_numbers_introducing_the_plot_staircase_to_measure_graphical_preferences.pdf">Meaning Beyond Numbers: Introducing the Plot Staircase to Measure Graphical Preferences</a>
+                    </h3>
+                    <p class="publication-authors">Talbot Andrews, Justin Curl &amp; Markus Prior</p>
+                    <p class="publication-venue">Political Analysis (2025)</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://arxiv.org/abs/2407.05338">A Blueprint for Auditing Generative AI</a>
+                    </h3>
+                    <p class="publication-authors">Jakob Mökander, Justin Curl &amp; Mihir Kshirsagar</p>
+                    <p class="publication-venue">Research Handbook on Law of Artificial Intelligence (2d ed. 2025)</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5847382">Judging Binary Searches: Four Essential Questions</a>
+                    </h3>
+                    <p class="publication-authors">Justin Curl</p>
+                    <p class="publication-venue">Privacy Law Scholars Conference (2025)</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://www.nature.com/articles/s42256-023-00765-8">Defending ChatGPT against Jailbreak Attack via Self-Reminder</a>
+                    </h3>
+                    <p class="publication-authors">Yueqi Xie, Jingwei Yi, Jiawei Shao, Justin Curl, Lingjuan Lyu, Qifeng Chen, Xing Xie &amp; Fangzhao Wu</p>
+                    <p class="publication-venue">Nature Machine Intelligence (2023)</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">
+            <a href="mailto:justincurl13@gmail.com">justincurl13@gmail.com</a>
+        </p>
+    </footer>
+
+    <script>
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
