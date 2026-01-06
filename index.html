@@ -7,6 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Academicons for Google Scholar -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css">
     <style>
         :root {
             --color-bg: #FDFCFA;
@@ -118,12 +122,12 @@
         .main {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 2rem 1.5rem 6rem;
+            padding: 1rem 1.5rem 6rem;
         }
 
         .profile-section {
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             opacity: 0;
             animation: fadeSlideUp 0.6s ease forwards;
         }
@@ -133,7 +137,7 @@
             height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem;
             border: 3px solid var(--color-border-light);
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
@@ -143,7 +147,7 @@
             font-size: clamp(2rem, 5vw, 2.5rem);
             font-weight: 400;
             letter-spacing: -0.02em;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: var(--color-text);
         }
 
@@ -155,8 +159,7 @@
         }
 
         .social-link {
-            font-size: 0.875rem;
-            font-weight: 500;
+            font-size: 1.25rem;
             color: var(--color-text-tertiary);
             text-decoration: none;
             transition: color var(--transition-fast);
@@ -166,11 +169,16 @@
             color: var(--color-accent);
         }
 
+        .social-link i,
+        .social-link svg {
+            vertical-align: middle;
+        }
+
         .divider {
             width: 48px;
             height: 2px;
             background: linear-gradient(90deg, var(--color-accent), var(--color-accent-soft));
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1rem;
             border-radius: 1px;
             opacity: 0;
             animation: scaleInLeft 0.5s ease 0.2s forwards;
@@ -372,9 +380,9 @@
         <div class="header-inner">
             <a href="#" class="header-brand">Justin Curl</a>
             <nav class="header-nav">
+                <a href="#projects" class="header-link">Projects</a>
                 <a href="#ai-policy" class="header-link">AI Policy</a>
                 <a href="#ai-law" class="header-link">AI → Law</a>
-                <a href="#projects" class="header-link">Projects</a>
             </nav>
         </div>
     </header>
@@ -384,10 +392,12 @@
             <img src="headshot.jpg" alt="Justin Curl" class="profile-pic" />
             <h1 class="profile-name">Justin Curl</h1>
             <div class="social-links">
-                <a href="https://substack.com/@justincurl?" target="_blank" class="social-link">Substack</a>
-                <a href="https://x.com/curl_justin" target="_blank" class="social-link">Twitter</a>
-                <a href="https://scholar.google.com/citations?user=nNEfT5MAAAAJ&hl=en" target="_blank" class="social-link">Google Scholar</a>
-                <a href="https://www.linkedin.com/in/justincurl/" target="_blank" class="social-link">LinkedIn</a>
+                <a href="https://substack.com/@justincurl?" target="_blank" class="social-link" title="Substack">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                </a>
+                <a href="https://x.com/curl_justin" target="_blank" class="social-link" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="mailto:jcurl@alumni.princeton.edu" class="social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/justincurl/" target="_blank" class="social-link" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
             </div>
         </section>
 
@@ -406,6 +416,27 @@
             <p class="bio-text">
                 For past papers and projects, see below!
             </p>
+        </section>
+
+        <section class="section" id="projects">
+            <div class="section-header">
+                <span class="section-title">Projects</span>
+                <div class="section-line"></div>
+            </div>
+            <div class="publications-list">
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://justincurl.github.io/interactive-essay-AINT-law/" target="_blank">Interactive Essay: What could advanced AI mean for the practice of law?</a>
+                    </h3>
+                    <p class="publication-authors">Visual representation of essay built with Claude Code and Devin</p>
+                </article>
+                <article class="publication">
+                    <h3 class="publication-title">
+                        <a href="https://justincurl.github.io/ai-action-plan/" target="_blank">AI Action Plan Tracker</a>
+                    </h3>
+                    <p class="publication-authors">List of Policy Actions organized by implementing Agency/Department</p>
+                </article>
+            </div>
         </section>
 
         <section class="section" id="ai-policy">
@@ -522,21 +553,6 @@
                     </h3>
                     <p class="publication-authors">Yueqi Xie, Jingwei Yi, Jiawei Shao, Justin Curl, Lingjuan Lyu, Qifeng Chen, Xing Xie &amp; Fangzhao Wu</p>
                     <p class="publication-venue">Nature Machine Intelligence (2023)</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="section" id="projects">
-            <div class="section-header">
-                <span class="section-title">Projects</span>
-                <div class="section-line"></div>
-            </div>
-            <div class="publications-list">
-                <article class="publication">
-                    <h3 class="publication-title">
-                        <a href="https://justincurl.github.io/ai-action-plan/" target="_blank">AI Action Plan</a>
-                    </h3>
-                    <p class="publication-authors">List of Policy Actions organized by implementing Agency/Department</p>
                 </article>
             </div>
         </section>
